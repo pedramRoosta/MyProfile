@@ -1,0 +1,29 @@
+$lightGray: #c7c3c3;
+@mixin shrinkMix {
+    top: -17px;
+    font-size: 12px;
+}
+.form-input-group {
+    position: relative;
+    margin: 20px 100px;
+    .form-input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid $lightGray;
+        margin-right: 50px;
+        outline: none;
+        &:focus + .form-input-label {
+            @include shrinkMix()
+        }
+    }
+    .form-input-label {
+        left: 0px;
+        top: 0px;
+        font-size: 15px;
+        position: absolute;
+        transition: 300ms ease all;
+        &.shrink {
+            @include shrinkMix()
+        }
+    }
+}
