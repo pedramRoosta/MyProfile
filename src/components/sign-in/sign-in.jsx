@@ -2,6 +2,7 @@ import React from 'react'
 import './sign-in.scss'
 import { FormInput } from '../controls/form-input/form-input';
 import { SignButton } from '../controls/button/signing/button';
+import {signInWithGoogle} from '../../firebase/firebase.utils'
 
 class SignIn extends React.Component {
     constructor() {
@@ -13,7 +14,6 @@ class SignIn extends React.Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('asd');
         this.setState({ email: '', password: '' })
     }
     handleChange = (e) => {
@@ -38,7 +38,7 @@ class SignIn extends React.Component {
                     value={this.state.password} />
                 <SignButton type='submit' >Sign In</SignButton>
 
-                <SignButton type='submit' btnType='google'>Google Sign-In</SignButton>
+                <SignButton type='submit' btntype='google' onClick={signInWithGoogle}>Google Sign-In</SignButton>
             </form>
         )
     }
