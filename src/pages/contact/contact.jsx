@@ -4,7 +4,7 @@ import Lorem from '../../assets/loremIpsum'
 
 const Contact = (props) => {
     return <div>
-        <img src=''/>
+        <img src='' alt=''/>
         <p>{Lorem}</p>
         </div>
 }

@@ -38,7 +38,7 @@ class SignIn extends React.Component {
                     value={this.state.password} />
                 <SignButton type='submit' >Sign In</SignButton>
 
-                <SignButton type='submit' btntype='google' onClick={signInWithGoogle}>Google Sign-In</SignButton>
+                <SignButton type='submit' isGoogleBtn onClick={signInWithGoogle}>Google Sign-In</SignButton>
             </form>
         )
     }

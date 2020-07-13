@@ -1,7 +1,7 @@
 import React from 'react'
 import './button.scss'
 
-export const SignButton=({children,...otherProps})=>
+export const SignButton=({children,isGoogleBtn,...otherProps})=>
 (
-    <button className={`${otherProps.btntype==='google'?'google-sign-button':'sign-button'}`} {...otherProps}>{children}</button>
+    <button className={`${isGoogleBtn ?'google-sign-button':'sign-button'}`} {...otherProps}>{children}</button>
 )
