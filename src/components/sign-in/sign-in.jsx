@@ -22,7 +22,7 @@ class SignIn extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit} className='sign-in'>
+            <form onSubmit={this.handleSubmit} className='sign-in-form'>
                 <span>Log in to you account from here .</span>
                 <FormInput 
                     handleChange={this.handleChange} 

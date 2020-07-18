@@ -8,7 +8,7 @@ import About from './pages/about/about'
 import { Home } from './pages/home/home';
 import { SelectedItem } from './pages/portfolio/selected-item'
 import { Signing } from './pages/signing/signing';
-import { auth } from './firebase/firebase.utils'
+import { auth, createUserProfile } from './firebase/firebase.utils'
 class App extends React.Component {
   constructor() {
     super();
@@ -19,20 +19,30 @@ class App extends React.Component {
 
   unsubscribeFunc = null;
   componentDidMount() {
-    this.unsubscribeFunc = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
-      console.log(this.state.currentUser);
-
+    this.unsubscribeFunc = auth.onAuthStateChanged(async authUser => {
+      if (authUser) {
+        const userRef = await createUserProfile(authUser);
+        userRef.onSnapshot(snapShot => {
+          console.log(snapShot);
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          })
+        })
+      }
+      else
+        this.setState({ currentUser: authUser })
     })
   }
-  componentWillUnmount()
-  {
+  componentWillUnmount() {
     this.unsubscribeFunc();
   }
   render() {
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser}/>
+        <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/portfolio' component={Portfolio} />
