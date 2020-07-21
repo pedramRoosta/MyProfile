@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setCurrentUser } from './redux/user/user-action'
 import './App.css';
-import { Header } from './components/Menu/header'
+import Header from './components/Menu/header'
 import Contact from './pages/contact/contact';
 import Portfolio from './pages/portfolio/portfolio'
 import About from './pages/about/about'
@@ -10,21 +12,16 @@ import { SelectedItem } from './pages/portfolio/selected-item'
 import { Signing } from './pages/signing/signing';
 import { auth, createUserProfile } from './firebase/firebase.utils'
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: null
-    }
-  }
 
   unsubscribeFunc = null;
   componentDidMount() {
+    const { setCurrentUser } = this.props;
     this.unsubscribeFunc = auth.onAuthStateChanged(async authUser => {
       if (authUser) {
         const userRef = await createUserProfile(authUser);
         userRef.onSnapshot(snapShot => {
           console.log(snapShot);
-          this.setState({
+          setCurrentUser({
             currentUser: {
               id: snapShot.id,
               ...snapShot.data()
@@ -33,7 +30,7 @@ class App extends React.Component {
         })
       }
       else
-        this.setState({ currentUser: authUser })
+        setCurrentUser(authUser)
     })
   }
   componentWillUnmount() {
@@ -42,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/portfolio' component={Portfolio} />
@@ -56,4 +53,7 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+export default connect(null, mapDispatchToProps)(App);

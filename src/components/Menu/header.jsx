@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './header.scss'
 import { ReactComponent as Logo } from '../../assets/chameleon.svg'
 import { auth } from '../../firebase/firebase.utils'
-export const Header = ({ currentUser }) =>
+import { connect } from 'react-redux'
+
+const Header = ({ currentUser }) =>
     (
         <div className='header'>
             <Link to='/'>
@@ -16,7 +18,7 @@ export const Header = ({ currentUser }) =>
                 <Link to='/contact' className='option'>Contact Me</Link>
                 {
                     currentUser ?
-                        <div className='option' onClick={()=>auth.signOut()}>Sign Out</div>
+                        <div className='option' onClick={() => auth.signOut()}>Sign Out</div>
                         :
                         <Link to='/signing' className='option'>Sign in</Link>
 
@@ -24,3 +26,9 @@ export const Header = ({ currentUser }) =>
             </nav>
         </div>
     )
+
+const mapStateToProps = state =>
+    ({
+        currentUser: state.user.currentUser
+    })
+export default connect(mapStateToProps)(Header);
