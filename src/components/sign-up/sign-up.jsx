@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './sign-up.scss'
 import { auth, createUserProfile } from '../../firebase/firebase.utils'
 import { FormInput } from '../controls/form-input/form-input';
-import { SignButton } from '../controls/button/signing/button';
+import { CustomButton } from '../controls/button/button';
 class SignUp extends Component {
     constructor() {
         super();
@@ -74,7 +74,7 @@ class SignUp extends Component {
                     value={confirmPassword}
                     handleChange={this.handleChange}
                 />
-                <SignButton type='submit' >Sign Up</SignButton>
+                <CustomButton type='submit' >Sign Up</CustomButton>
             </form>
         </div>);
     }

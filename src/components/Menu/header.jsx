@@ -5,8 +5,9 @@ import './header.scss'
 import { ReactComponent as Logo } from '../../assets/chameleon.svg'
 import { auth } from '../../firebase/firebase.utils'
 import { connect } from 'react-redux'
-
-const Header = ({ currentUser }) =>
+import Cart from '../cart/cart'
+import CartList from '../cart-list/cart-list'
+const Header = ({ currentUser, hidden }) =>
     (
         <div className='header'>
             <Link to='/'>
@@ -23,12 +24,16 @@ const Header = ({ currentUser }) =>
                         <Link to='/signing' className='option'>Sign in</Link>
 
                 }
+                <Cart />
             </nav>
+            {
+                hidden ?null: <CartList />
+            }
         </div>
     )
 
-const mapStateToProps = state =>
+const mapStateToProps = ({ user: { currentUser }, cart:{hidden} }) =>
     ({
-        currentUser: state.user.currentUser
+        currentUser, hidden
     })
 export default connect(mapStateToProps)(Header);

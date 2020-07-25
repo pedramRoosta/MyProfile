@@ -1,0 +1,20 @@
+.cart-list
+{
+    position: absolute;
+    right: 105px;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 400px;
+    border: 1px solid rgb(87, 82, 82);
+    background-color: rgb(255, 255, 255);
+    z-index: 5;
+
+    .cart-list-items
+    {
+        width: 220px;
+        height: 80%;
+        margin: auto;
+    }
+}

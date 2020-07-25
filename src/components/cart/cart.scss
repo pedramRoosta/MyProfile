@@ -1,0 +1,18 @@
+.cart {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .cart-logo {
+        width: 35px;
+        height: 35px;
+    }
+    .cart-item-count
+    {
+        position: absolute;
+        padding-top: 10px;
+    }
+}

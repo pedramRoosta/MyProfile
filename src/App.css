@@ -6,10 +6,10 @@ a{
   cursor: pointer;
 }
 .App {
-  text-align: center;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px 80px;
+  margin: 30px 100px;
 
 }
 

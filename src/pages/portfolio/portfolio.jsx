@@ -30,6 +30,16 @@ class Portfolio extends Component {
                     title: "More...", type: '/more',
                     desc: "no description",
                     imageSrc: "https://picsum.photos/id/214/200/300"
+                },{
+                    id: 5,
+                    title: "More...", type: '/more',
+                    desc: "no description",
+                    imageSrc: "https://picsum.photos/id/214/200/300"
+                },{
+                    id: 6,
+                    title: "More...", type: '/more',
+                    desc: "no description",
+                    imageSrc: "https://picsum.photos/id/214/200/300"
                 }
             ]
         }
