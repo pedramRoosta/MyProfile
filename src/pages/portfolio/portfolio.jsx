@@ -46,7 +46,7 @@ class Portfolio extends Component {
     }
     render() {
         return <div className="portfolio">
-            {this.state.items.map(({ id, ...otherProps }) => <PortfolioItem key={id} id={id} {...otherProps} />)}
+            {this.state.items.map(item => <PortfolioItem key={item.id} item={item} />)}
 
         </div>
     }

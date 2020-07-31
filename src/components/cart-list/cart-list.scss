@@ -7,9 +7,10 @@
     flex-direction: column;
     width: 250px;
     height: 400px;
-    border: 1px solid rgb(87, 82, 82);
+    border:1px solid #ded1d1;
     background-color: rgb(255, 255, 255);
     z-index: 5;
+    border-radius: 3px;
 
     .cart-list-items
     {
